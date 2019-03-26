@@ -39,9 +39,8 @@ set -x
 #
 
 wget -O ${TMPDIR}/nordic_sdk_for_thread.zip -nv ${NORDIC_SDK_FOR_THREAD_URL} || exit 1
-unzip -d ${TRAVIS_BUILD_DIR}/nRF52840 -q ${TMPDIR}/nordic_sdk_for_thread.zip || exit 1
+unzip -d ${TRAVIS_BUILD_DIR}/nRF5x-SDK-for-Thread-and-Zigbee -q ${TMPDIR}/nordic_sdk_for_thread.zip || exit 1
 rm ${TMPDIR}/nordic_sdk_for_thread.zip
-ls -l ${TRAVIS_BUILD_DIR}/nRF52840
 
 # Install Nordic nRF5x Command Line Tools
 #
@@ -50,7 +49,6 @@ wget -O ${TMPDIR}/nordic_command_line_tools.tar -nv ${NORDIC_COMMAND_LINE_TOOLS_
 mkdir ${TRAVIS_BUILD_DIR}/nRF5x-Command-Line-Tools
 tar -C ${TRAVIS_BUILD_DIR}/nRF5x-Command-Line-Tools -xf ${TMPDIR}/nordic_command_line_tools.tar || exit 1
 rm ${TMPDIR}/nordic_command_line_tools.tar
-ls -l ${TRAVIS_BUILD_DIR}/nRF5x-Command-Line-Tools
 
 # Install ARM GCC Toolchain
 #
@@ -59,7 +57,6 @@ wget -O ${TMPDIR}/arm_gcc_toolchain.tar.bz2 -nv ${ARM_GCC_TOOLCHAIN_URL} || exit
 mkdir ${TRAVIS_BUILD_DIR}/arm
 tar -jxf ${TMPDIR}/arm_gcc_toolchain.tar.bz2 --directory ${TRAVIS_BUILD_DIR}/arm || exit 1
 rm ${TMPDIR}/arm_gcc_toolchain.tar.bz2
-ls -l ${TRAVIS_BUILD_DIR}/arm
 
 # Clone the openweave-nrf52840-demo application.  This code will be used to
 # test the ability to build OpenWeave for the ESP32.
@@ -100,7 +97,6 @@ echo '--------------------------------------------------------------------------
 echo 'nRF52840 Build Preparation Complete'
 echo ''
 echo "openweave-core branch: ${TRAVIS_BRANCH}"
-echo "travis build dir: ${TRAVIS_BUILD_DIR}"
 echo "Nordic SDK for Thread and Zigbee: ${NORDIC_SDK_FOR_THREAD_URL}"
 echo "Nordic nRF5x Command Line Tools: ${NORDIC_COMMAND_LINE_TOOLS_URL}"
 echo "ARM GCC Toolchain: ${ARM_GCC_TOOLCHAIN_URL}"
